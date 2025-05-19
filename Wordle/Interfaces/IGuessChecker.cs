@@ -1,6 +1,8 @@
+using Wordle.Model;
+
 namespace Wordle.Interfaces;
 
-public interface IGuessCheck
+public interface IGuessChecker
 {
-    
+    public List<LetterFeedback> CompareWords(string secretWord);
 }
