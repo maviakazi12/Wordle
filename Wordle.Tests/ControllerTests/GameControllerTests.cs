@@ -16,7 +16,7 @@ public class GameControllerTests
     {
         //Arrange
         var mockWordProvider = new Mock<IWordProvider>();
-        mockWordProvider.Setup(a => a.GetWord()).Returns("plate");
+        mockWordProvider.Setup(a => a.SecretWord).Returns("plate");
         var gameController = new GameController(mockWordProvider.Object);
         //Act
         gameController.StartGame();
