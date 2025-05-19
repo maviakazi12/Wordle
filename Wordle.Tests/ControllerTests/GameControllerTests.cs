@@ -8,18 +8,19 @@ using Moq;
 namespace Wordle.Tests.Controller;
 
 [TestSubject(typeof(GameController))]
-public class GameControllerTest
+public class GameControllerTests
 {
 
     [Fact]
-    public void StartGame_Should_Get_Word_From_WordProvider()
+    public void StartGame_ReturnsWordProvidedByWordProvider()
     {
         //Arrange
         var mockWordProvider = new Mock<IWordProvider>();
         mockWordProvider.Setup(a => a.GetWord()).Returns("plate");
         var gameController = new GameController(mockWordProvider.Object);
         //Act
-        var word = gameController.StartGame();
+        gameController.StartGame();
+        var word = gameController.SecretWord;
         //Assert
         word.Should().Be("plate");
     }
