@@ -21,4 +21,21 @@ public class InputOutputTest
         //Assert
         output.Should().Contain("🎉 Welcome to Wordle! 🎉");
     }
+
+    [Fact]
+    public void GetUserInput_Should_Capture_Player_Guess_Word()
+    {
+        //Arrange
+        var fakeInput = new StringReader("apple");
+        Console.SetIn(fakeInput);
+
+        var fakeOutput = new StringWriter();
+        Console.SetOut(fakeOutput);
+        
+        var inputOutput = new InputOutput();
+        //Act
+        var userInput = inputOutput.GetUserInput();
+        //Assert
+        userInput.Should().Be("apple");
+    }
 }

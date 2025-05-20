@@ -9,4 +9,8 @@ public static class PromptMessages
                                   "🟨 = correct letter, wrong position\n" +
                                   "⬛ = letter not in the word\n\n" +
                                   "Good luck and have fun! 🌟\n";
+
+    public const string GetUserInput = "Enter Your Guess";
 }
+
+    

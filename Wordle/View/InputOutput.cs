@@ -9,4 +9,16 @@ public class InputOutput : IInputOutput
     {
         Console.WriteLine(PromptMessages.Welcome);
     }
+
+    public string GetUserInput()
+    {
+        string playerInput;
+        do
+        {
+            Console.WriteLine(PromptMessages.GetUserInput);
+            playerInput = Console.ReadLine()?.ToLower() ?? "";
+        } while (string.IsNullOrWhiteSpace(playerInput));
+
+        return playerInput;
+    }
 }
