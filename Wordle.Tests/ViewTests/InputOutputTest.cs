@@ -16,9 +16,9 @@ public class InputOutputTest
         Console.SetOut(stringWriter);
         var inputOutput = new InputOutput();
         //Act
-        InputOutput.Welcome();
+        inputOutput.Welcome();
         var output = stringWriter.ToString();
         //Assert
-        output.Should().Contain("Welcome To Wordle");
+        output.Should().Contain("🎉 Welcome to Wordle! 🎉");
     }
 }
