@@ -6,17 +6,21 @@ public class GameController
 {
     private IWordProvider _wordProvider;
     private IGuessChecker _guessChecker;
-    private string _secretWord;
-    public string SecretWord => _secretWord;
+    private IInputOutput _io;
+    public string SecretWord { get; private set; }
+    public string UserInput { get; private set; }
+    
 
-    public GameController(IWordProvider wordProvider, IGuessChecker guessChecker)
+    public GameController(IWordProvider wordProvider, IGuessChecker guessChecker, IInputOutput inputOutput)
     {
         _wordProvider = wordProvider;
         _guessChecker = guessChecker;
+        _io = inputOutput;
     }
     public void StartGame()
     {
-        _secretWord = _wordProvider.SecretWord;
-        _guessChecker.CompareWords(_secretWord);
+        SecretWord = _wordProvider.SecretWord;
+        UserInput = _io.GetUserInput();
+        _guessChecker.CompareWords(SecretWord, UserInput);
     }
 }

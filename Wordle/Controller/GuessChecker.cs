@@ -5,8 +5,8 @@ namespace Wordle.Controller;
 
 public class GuessChecker :IGuessChecker
 {
-    public List<LetterFeedback> CompareWords(string secretWord)
+    public List<LetterFeedback> CompareWords(string secretWord, string userInput)
     {
-        
+        return new List<LetterFeedback>();
     }
 }

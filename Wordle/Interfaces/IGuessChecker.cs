@@ -4,5 +4,5 @@ namespace Wordle.Interfaces;
 
 public interface IGuessChecker
 {
-    public List<LetterFeedback> CompareWords(string secretWord);
+    public List<LetterFeedback> CompareWords(string secretWord, string userInput);
 }

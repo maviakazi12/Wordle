@@ -1,6 +1,8 @@
 using FluentAssertions;
 using JetBrains.Annotations;
+using Wordle.Interfaces;
 using Wordle.View;
+using Moq;
 
 namespace Wordle.Tests.ViewTests;
 
@@ -14,7 +16,8 @@ public class InputOutputTest
         //Arrange
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
-        var inputOutput = new InputOutput();
+        var mockValidator = new Mock<IWordValidator>();
+        var inputOutput = new InputOutput(mockValidator.Object);
         //Act
         inputOutput.Welcome();
         var output = stringWriter.ToString();
@@ -32,7 +35,8 @@ public class InputOutputTest
         var fakeOutput = new StringWriter();
         Console.SetOut(fakeOutput);
         
-        var inputOutput = new InputOutput();
+        var mockValidator = new Mock<IWordValidator>();
+        var inputOutput = new InputOutput(mockValidator.Object);
         //Act
         var userInput = inputOutput.GetUserInput();
         //Assert
