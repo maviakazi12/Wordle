@@ -11,14 +11,16 @@ namespace Wordle.Tests.ControllerTests;
 [TestSubject(typeof(GameController))]
 public class GameControllerTests
 {
+    private string _userInput;
     private (GameController controller, AutoMocker mocker) CreateGameController()
     {
-        // var gameController = new GameController(mockWordProvider.Object);
+        _userInput = "gamer";
         var mocker = new AutoMocker();
         var controller = new GameController(
 
             mocker.Get<IWordProvider>(),
-            mocker.Get<IGuessChecker>()
+            mocker.Get<IGuessChecker>(),
+            mocker.Get<IInputOutput>()
         );
         return (controller, mocker);
     }
@@ -43,12 +45,29 @@ public class GameControllerTests
         //Act
         controller.StartGame();
         //Assert
-        mocker.GetMock<IGuessChecker>().Verify(a => a.CompareWords("plate"), Times.Once);
+        mocker.GetMock<IGuessChecker>().Verify(a => a.CompareWords("plate", _userInput), Times.Once);
     }
 
     [Fact]
     public void StartGame_Should_Invoke_User_Input_Prompt()
     {
-        
+        //Arrange
+        var (controller, mocker) = CreateGameController();
+        //Act
+        controller.StartGame();
+        //Assert
+        mocker.GetMock<IInputOutput>().Verify(a => a.GetUserInput(), Times.Once);
+    }
+    [Fact]
+    public void StartGame_Returns_UserInput_Provided_By_InputOutput()
+    {
+        //Arrange
+        var (controller, mocker) = CreateGameController();
+        mocker.GetMock<IInputOutput>().Setup(a => a.GetUserInput()).Returns("plate");
+        //Act
+        controller.StartGame();
+        var word = controller.UserInput;
+        //Assert
+        word.Should().Be("plate");
     }
 }
