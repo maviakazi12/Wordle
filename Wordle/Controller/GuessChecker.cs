@@ -1,8 +1,9 @@
+using Wordle.Interfaces;
 using Wordle.Model;
 
 namespace Wordle.Controller;
 
-public class GuessChecker
+public class GuessChecker :IGuessChecker
 {
     public List<LetterFeedback> CompareWords(string secretWord)
     {

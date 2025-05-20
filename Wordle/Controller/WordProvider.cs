@@ -1,7 +1,8 @@
+using Wordle.Interfaces;
 using Wordle.Utilities;
 namespace Wordle.Controller;
 
-public class WordProvider
+public class WordProvider : IWordProvider
 {
     private List<string> ShuffledList {get; set; } = new List<string>();
     public string SecretWord { get; private set; }

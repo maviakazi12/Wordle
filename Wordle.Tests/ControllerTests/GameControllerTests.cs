@@ -6,7 +6,7 @@ using Moq;
 using Moq.AutoMock;
 
 
-namespace Wordle.Tests.Controller;
+namespace Wordle.Tests.ControllerTests;
 
 [TestSubject(typeof(GameController))]
 public class GameControllerTests
@@ -44,5 +44,11 @@ public class GameControllerTests
         controller.StartGame();
         //Assert
         mocker.GetMock<IGuessChecker>().Verify(a => a.CompareWords("plate"), Times.Once);
+    }
+
+    [Fact]
+    public void StartGame_Should_Invoke_User_Input_Prompt()
+    {
+        
     }
 }
