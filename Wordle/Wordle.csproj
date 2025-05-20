@@ -9,7 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="View\" />
+      <None Update="Resources\WordList.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
