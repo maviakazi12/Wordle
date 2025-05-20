@@ -11,6 +11,11 @@ public static class PromptMessages
                                   "Good luck and have fun! 🌟\n";
 
     public const string GetUserInput = "Enter Your Guess";
+
+    public const string ValidWordLengthMessage =
+        "Bad Guess. The word you entered is not 5 letter word.";
+
+    public const string InvalidWord = "Invalid Word";
 }
 
     
